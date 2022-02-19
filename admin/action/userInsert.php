@@ -13,8 +13,8 @@
 
     $result = $conn->query($sql);
     if($result){
-        header("location:../user?alert=insert");
+        header("location:../user.php?alert=insert");
     }else{  
-        header("location:../user?alert=insert_gagal");
+        header("location:../user.php?alert=insert_gagal");
     }
 ?>

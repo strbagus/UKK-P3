@@ -23,9 +23,9 @@
 
 
     if ($result) {
-        header("location:../menu?alert=insert");
+        header("location:../menu.php?alert=insert");
     }else{
-        header("location:../menu?alert=insert_gagal");
+        header("location:../menu.php?alert=insert_gagal");
     }
 
 ?>

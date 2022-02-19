@@ -7,8 +7,8 @@
     $sql2 = "INSERT INTO tb_meja (meja_no, meja_status) VALUES ('$no', 'Kosong')";
     $result = $conn->query($sql2);
     if ($result) {
-        header("location:../meja?alert=insert");
+        header("location:../meja.php?alert=insert");
     }else {
-        header("location:../meja?alert=insert_gagal");
+        header("location:../meja.php?alert=insert_gagal");
     }
 ?>

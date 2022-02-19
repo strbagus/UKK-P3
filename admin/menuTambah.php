@@ -3,7 +3,7 @@
     <div class="col-md-5 mx-auto bg-light rounded py-3 px-4">
         <h3>Tambah Menu</h3>
         <hr>
-        <form method="post" action="action/menuInsert" enctype="multipart/form-data">
+        <form method="post" action="action/menuInsert.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Nama Menu</label>
                 <input type="text" name="menu" class="form-control" required="required">

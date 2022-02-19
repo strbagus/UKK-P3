@@ -6,7 +6,7 @@
             <h3>Data Menu</h3>
             <hr>
             <div class="d-flex justify-content-end">
-                <a href="menuTambah" class="btn btn-primary mb-3">Tambah</a>
+                <a href="menuTambah.php" class="btn btn-primary mb-3">Tambah</a>
             </div>
             <div class="tables-responsive">
                 <table class="table table-striped table-hover table bordered" id="table-datatable">
@@ -34,8 +34,8 @@
                                     <td><?php echo $d['menu_tipe'] ?></td>
                                     <td><?php echo $d['menu_status'] ?></td>
                                     <td>
-                                        <a href="menuEdit?id=<?php echo $d['menu_id']?>" class="btn-warning btn btn-sm">Edit</a>
-                                        <a href="action/menuDelete?id=<?php echo $d['menu_id']?>" onclick="return confirm('Hapus?');" class="btn-danger btn btn-sm">Hapus</a>
+                                        <a href="menuEdit.php?id=<?php echo $d['menu_id']?>" class="btn-warning btn btn-sm">Edit</a>
+                                        <a href="action/menuDelete.php?id=<?php echo $d['menu_id']?>" onclick="return confirm('Hapus?');" class="btn-danger btn btn-sm">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php

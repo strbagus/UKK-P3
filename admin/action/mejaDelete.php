@@ -5,8 +5,8 @@
     $result = $conn->query($sql);
 
     if ($result) {
-        header("location:../meja?alert=delete");
+        header("location:../meja.php?alert=delete");
     }else{
-        header("location:../meja?alert=delete_gagal");
+        header("location:../meja.php?alert=delete_gagal");
     }
 ?>

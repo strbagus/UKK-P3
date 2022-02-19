@@ -4,7 +4,7 @@
         <h3>Data Order</h3>
         <hr>
         <div class="d-flex justify-content-end">
-            <a href="orderTambah" class="btn btn-primary mb-2">Tambah</a>
+            <a href="orderTambah.php" class="btn btn-primary mb-2">Tambah</a>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered" id="table-datatable">
@@ -31,8 +31,8 @@
                             <td><?php echo $d['order_tanggal'] ?></td>
                             <td><?php echo $d['order_status'] ?></td>
                             <td>
-                                <a href="orderEdit?id=<?php echo $d['order_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="action/orderDelete?id=<?php echo $d['order_id'] ?>" onclick="return confirm('Hapus?');" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="orderEdit.php?id=<?php echo $d['order_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="action/orderDelete.php?id=<?php echo $d['order_id'] ?>" onclick="return confirm('Hapus?');" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                         </tr>
                         

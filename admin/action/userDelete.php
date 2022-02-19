@@ -6,8 +6,8 @@
     $result = $conn->query($sql);
 
     if($result){
-        header("location:../user?alert=delete");
+        header("location:../user.php?alert=delete");
     }else{
-        header("location:../user?alert=delete_gagal");
+        header("location:../user.php?alert=delete_gagal");
     }
 ?>

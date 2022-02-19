@@ -26,9 +26,9 @@
     }
     $result = $conn->query($sql);
     if ($result) {
-        header("location:../menu?alert=update");
+        header("location:../menu.php?alert=update");
     }else {
-        header("location:../menu?alert=update_gagal");
+        header("location:../menu.php?alert=update_gagal");
     }
 
 ?>

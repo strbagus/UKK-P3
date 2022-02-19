@@ -17,9 +17,9 @@ if($level==""){
 $result = $conn->query($sql);
 
 if ($sql) {
-    header("location:../user?alert=update");
+    header("location:../user.php?alert=update");
 }else{
-    header("location:../user?alert=update_gagal");
+    header("location:../user.php?alert=update_gagal");
 }
 
 ?>

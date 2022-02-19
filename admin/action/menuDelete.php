@@ -7,8 +7,8 @@ $sql = "DELETE FROM tb_menu WHERE menu_id=$id";
 $result = $conn->query($sql);
 
 if ($result) {
-    header("location:../menu?alert=delete");
+    header("location:../menu.php?alert=delete");
 }else {
-    header("location:../menu?alert=delete_gagal");
+    header("location:../menu.php?alert=delete_gagal");
 }
 ?>

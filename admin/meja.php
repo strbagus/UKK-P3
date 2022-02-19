@@ -4,8 +4,8 @@
         <h3>Data Meja</h3>
         <hr>
         <div class="d-flex justify-content-end">
-            <a href="action/mejaInsert" class="btn btn-primary m-2">Tambah</a>
-            <a href="action/mejaDelete" onclick="return confirm('Hapus?');" class="btn btn-danger m-2">Delete</a>
+            <a href="action/mejaInsert.php" class="btn btn-primary m-2">Tambah</a>
+            <a href="action/mejaDelete.php" onclick="return confirm('Hapus?');" class="btn btn-danger m-2">Delete</a>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered" id="table-datatable">

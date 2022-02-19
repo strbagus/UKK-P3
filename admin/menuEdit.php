@@ -10,7 +10,7 @@ $d = $result->fetch_array();
     <div class="col-md-5 mx-auto bg-light rounded py-3 px-4">
         <h3>Tambah Menu</h3>
         <hr>
-        <form method="post" action="action/menuUpdate">
+        <form method="post" action="action/menuUpdate.php">
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <div class="form-group">
                 <label for="">Nama Menu</label>

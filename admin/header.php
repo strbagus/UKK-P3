@@ -37,32 +37,32 @@
         <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="menu">Menu</a>
+            <a class="nav-link" href="menu.php">Menu</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="order">Order</a>
+            <a class="nav-link" href="order.php">Order</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="transaksi">Transaksi</a>
+            <a class="nav-link" href="transaksi.php">Transaksi</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="omset">Omset</a>
+            <a class="nav-link" href="omset.php">Omset</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="meja">Meja</a>
+            <a class="nav-link" href="meja.php">Meja</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="user">User</a>
+            <a class="nav-link" href="user.php">User</a>
             </li>
         </ul>
         <span class="navbar-text">
             <?php
                 echo $_SESSION['nama']
                 ?>
-                &nbsp;<a href='action/logout' onclick="return confirm('Keluar?');" class='btn btn-sm btn-outline-danger'>Keluar</a>
+                &nbsp;<a href='action/logout.php' onclick="return confirm('Keluar?');" class='btn btn-sm btn-outline-danger'>Keluar</a>
                 <?php
             ?>
         </span>
