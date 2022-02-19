@@ -13,9 +13,9 @@
 
     $result = $conn->query($sql);
     if ($result) {
-        header("location: login?alert=insert");
+        header("location: login.php?alert=insert");
     }else{
-        header("location: login?alert=gagal");
+        header("location: login.php?alert=gagal");
     }
 
 ?>

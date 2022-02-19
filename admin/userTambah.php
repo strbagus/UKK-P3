@@ -5,7 +5,7 @@
     <div class="col-md-5 mx-auto py-3 px-4 bg-light rounded">
         <h3>Tambah User</h3>
         <hr>
-        <form action="action/userInsert" method="post">
+        <form action="action/userInsert.php" method="post">
             <div class="form-group">
                 <label for="">Username</label>
                 <input type="text" class="form-control" name="username" required="required">

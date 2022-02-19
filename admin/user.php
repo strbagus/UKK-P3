@@ -40,7 +40,7 @@ include 'header.php' ;
                                 <td><?php echo $d['user_nama']?></td>
                                 <td><?php echo $d['level_nama']?></td>
                                 <td>
-                                    <a href="userEdit?id=<?php echo $d['user_id']?>" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="userEdit.php?id=<?php echo $d['user_id']?>" class="btn btn-sm btn-warning">Edit</a>
                                     <a href="action/userDelete?id=<?php echo $d['user_id']?>" onclick="return confirm('Hapus?');" class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>

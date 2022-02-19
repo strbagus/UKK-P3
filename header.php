@@ -40,11 +40,11 @@
         <span class="navbar-text">
             <?php
             if (empty($_SESSION['login'])) {
-                echo "<a href='login' class='btn btn-sm btn-outline-info'>Masuk</a>";
+                echo "<a href='login.php' class='btn btn-sm btn-outline-info'>Masuk</a>";
             }else{
                 echo $_SESSION['nama']
                 ?>
-                &nbsp;<a href='logout' onclick="return confirm('Keluar?');" class='btn btn-sm btn-outline-danger'>Keluar</a>
+                &nbsp;<a href='logout.php' onclick="return confirm('Keluar?');" class='btn btn-sm btn-outline-danger'>Keluar</a>
             <?php
             }
             ?>

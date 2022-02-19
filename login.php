@@ -17,7 +17,7 @@ if($_SESSION['status']==="admin_login"){
             <div class="col-md-5 mt-5 mx-auto rounded py-3 px-4 bg-light">
                 <h3>Login</h3>
                 <hr>
-                <form action="loginAction" method="post">
+                <form action="loginAction.php" method="post">
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                         <input type="text" name="username" class="form-control" required="required" placeholder="Username">
@@ -32,7 +32,7 @@ if($_SESSION['status']==="admin_login"){
                     </div>
                 </form>
                 
-                <p class="regis-text fw-light text-muted">Belum punya akun?&nbsp;<a href="register">Buat Akun</a></p>
+                <p class="regis-text fw-light text-muted">Belum punya akun?&nbsp;<a href="register.php">Buat Akun</a></p>
             </div>
         </div>
     <?php

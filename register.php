@@ -5,7 +5,7 @@ include 'header.php';
         <div class="col-md-5 mx-auto px-4 py-3 rounded bg-light">
             <h3>Registrasi</h3>
             <hr>
-            <form action="registerAction" method="post">
+            <form action="registerAction.php" method="post">
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" class="form-control" name="username" required="required">

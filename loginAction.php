@@ -35,11 +35,11 @@
                 header("location:owner");
             }else{
                 $_SESSION['status']="pelanggan_login";
-                header("location:index");
+                header("location:index.php");
             }
 
         }else{
-            header("location:login?alert=gagal_userpass");
+            header("location:login.php?alert=gagal_userpass");
         }
         
     }
