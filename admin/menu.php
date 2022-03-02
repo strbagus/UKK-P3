@@ -30,7 +30,7 @@
                                 <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $d['menu_nama'] ?></td>
-                                    <td><?php echo $d['menu_harga'] ?></td>
+                                    <td><?php echo "Rp.".number_format($d['menu_harga']) ?></td>
                                     <td><?php echo $d['menu_tipe'] ?></td>
                                     <td><?php echo $d['menu_status'] ?></td>
                                     <td>

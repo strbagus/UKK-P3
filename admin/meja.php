@@ -13,7 +13,7 @@
                     <tr>
                         <th>No Meja</th>
                         <th>status</th>
-                        <th>Aksi</th>
+                        <th width="15%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,8 +25,10 @@
                         <tr>
                             <td><?php echo $d['meja_no']?></td>
                             <td><?php echo $d['meja_status'] ?></td>
-                            <td>
-                                NaN
+                            <td class="d-flex justify-content-center">
+                                <a href="action/mejaUpdate.php?id=<?php echo $d['meja_no']."&status=".$d['meja_status'] ?>">
+                                    <div class="btn btn-info btn-sm text-white">Ubah Status</div>
+                                </a>
                             </td>
                         </tr>
                         <?php

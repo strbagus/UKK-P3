@@ -1,11 +1,4 @@
-<?php include 'header.php' ;
-
-$id = $_GET['id'];
-$sql = "SELECT * FROM tb_masakan WHERE masakan_id=$id";
-$result = $conn->query($sql);
-$d = $result->fetch_array();
-
-?>
+<?php include 'header.php' ;?>
 <div class="container">
     <div class="col-md-5 mx-auto bg-light rounded py-3 px-4">
         <h3>Tambah Menu</h3>

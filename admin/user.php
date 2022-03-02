@@ -7,14 +7,51 @@ include 'header.php' ;
         <h3>Data User</h3>
         <hr>
         <div class="d-flex justify-content-between">
-            <div>
-                <form action="">
-                    <input type="submit" value="Staff" name="Staff" class="btn btn-info">
-                    <input type="submit" value="Pelanggan" name="Pelanggan" class="btn btn-info">
-                    <input type="submit" value="Semua" name="Semua" class="btn btn-info">
-                </form>
-            </div>
-            <a href="userTambah" class="btn btn-primary m-2">Tambah</a>
+            <?php
+                if(isset($_GET['staff'])){
+                    $sql = "SELECT * FROM 
+                            tb_user INNER JOIN tb_level 
+                            ON 
+                            tb_user.user_level=tb_level.level_id 
+                            WHERE 
+                            tb_user.user_level='1'
+                            OR tb_user.user_level='2'
+                            OR tb_user.user_level='3'
+                            OR tb_user.user_level='4'";
+                            ?>
+                    <div>
+                        <div class="btn btn-info text-white disabled">Staff</div>
+                        <a href="user.php?pelanggan=true"><div class="btn btn-info text-white">Pelanggan</div></a>
+                        <a href="user.php?semua=true"><div class="btn btn-info text-white">Semua</div></a>
+                    </div>
+                            <?php
+                }else if(isset($_GET['pelanggan'])){
+                    $sql = "SELECT * FROM 
+                            tb_user INNER JOIN tb_level 
+                            ON 
+                            tb_user.user_level=tb_level.level_id 
+                            WHERE 
+                            tb_user.user_level = '5'";
+                            ?>
+                <div>
+                    <a href="user.php?staff=true"><div class="btn btn-info text-white">Staff</div></a>
+                    <div class="btn btn-info text-white disabled">Pelanggan</div>
+                    <a href="user.php?semua=true"><div class="btn btn-info text-white">Semua</div></a>
+                </div>
+                            <?php
+                }else{
+                    $sql = "SELECT * FROM tb_user INNER JOIN tb_level ON tb_user.user_level=tb_level.level_id";
+                    ?>
+                        <div>
+                            <a href="user.php?staff=true"><div class="btn btn-info text-white">Staff</div></a>
+                            <a href="user.php?pelanggan=true"><div class="btn btn-info text-white">Pelanggan</div></a>
+                            <div class="btn btn-info text-white disabled" >Semua</div>
+                        </div>
+                    <?php
+                }
+            ?>
+            
+            <a href="userTambah.php" class="btn btn-primary m-2">Tambah</a>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered" id="table-datatable">
@@ -29,7 +66,6 @@ include 'header.php' ;
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM tb_user INNER JOIN tb_level ON tb_user.user_level=tb_level.level_id";
                         $result = $conn->query($sql);
                         $no = 1;
                         while($d=$result->fetch_array()){

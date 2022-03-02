@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="../assets/js/jquery.js"></script>
     <script type="text/javascript" src="../assets/DataTables/datatables.js"></script>
     <script type="text/javascript" src="../assets/DataTables/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css ">
+    <link rel="stylesheet" href="../assets/icon/css/all.css">
+
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.svg">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css "> -->
     <title>Admin - Resto Bagus</title>
 
     <style>
@@ -21,8 +25,8 @@
     <?php
     include '../config.php';
     session_start();
-    if(!$_SESSION['status']==="admin_login"){
-        header("location: ../login?alert=belum_login");
+    if(!$_SESSION['status']=="admin_login"){
+        header("location: ../login.php?alert=belum_login");
     }
     ?>
 </head>

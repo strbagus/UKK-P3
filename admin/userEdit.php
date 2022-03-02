@@ -10,7 +10,7 @@ $d = $result->fetch_array();
 
 <div class="container">
     <div class="col-md-5 mx-auto py-3 px-4 bg-light rounded">
-        <h3>Tambah User</h3>
+        <h3>Edit User</h3>
         <hr>
         <form action="action/userUpdate.php" method="post">
             <input type="hidden" value="<?php echo $id ?>" name="id">
