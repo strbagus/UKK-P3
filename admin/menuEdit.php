@@ -1,4 +1,8 @@
-<?php include 'header.php' ;?>
+<?php include 'header.php';
+$id = $_GET['id'];
+$sql = $conn->query("SELECT * FROM tb_menu WHERE menu_id = $id");
+$d = $sql->fetch_array();
+?>
 <div class="container">
     <div class="col-md-5 mx-auto bg-light rounded py-3 px-4">
         <h3>Tambah Menu</h3>
@@ -7,11 +11,11 @@
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <div class="form-group">
                 <label for="">Nama Menu</label>
-                <input type="text" name="menu" value="<?php echo $d['masakan_nama'] ?>" class="form-control" required="required">
+                <input type="text" name="menu" value="<?php echo $d['menu_nama'] ?>" class="form-control" required="required">
             </div>
             <div class="form-group">
                 <label for="">Harga</label>
-                <input type="number" name="harga" value="<?php echo $d['masakan_harga'] ?>" class="form-control" required="required">
+                <input type="number" name="harga" value="<?php echo $d['menu_harga'] ?>" class="form-control" required="required">
             </div>
             <div class="form-group">
                 <label for="">Tipe</label>
