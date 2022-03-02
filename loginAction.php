@@ -20,6 +20,7 @@
             session_start();
             $_SESSION['login'] = $d['user_level'];
             $_SESSION['nama'] = $d['user_nama'];
+            $_SESSION['uid'] = $d['user_id'];
 
             if($d['user_level'] == 1){
                 $_SESSION['status']="admin_login";

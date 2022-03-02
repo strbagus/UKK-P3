@@ -5,9 +5,9 @@
     <hr>
     <table class="table table-bordered table-striped">
         <tr>
-            <th colspan="4" class="text-center">MAKANAN</th>
+            <th colspan="5" class="text-center">MAKANAN</th>
         </tr>
-        <tr>
+        <tr class="text-center">
             <th width="1%">No</th>
             <th>Menu</th>
             <th>Status</th>
@@ -23,15 +23,15 @@
                     <td><?php echo $no++?></td>
                     <td><?php echo $dmakan['menu_nama'] ?></td>
                     <td><?php echo $dmakan['menu_status'] ?></td>
-                    <td><?php echo $dmakan['menu_harga'] ?></td>
+                    <td><?php echo "Rp.".number_format($dmakan['menu_harga']) ?></td>
                 </tr>
                 <?php
             }
         ?>
         <tr>
-            <th colspan="4" class="text-center">MIMUMAN</th>
+            <th colspan="5" class="text-center">MIMUMAN</th>
         </tr>
-        <tr>
+        <tr class="text-center">
             <th width="1%">No</th>
             <th>Menu</th>
             <th>Status</th>
@@ -48,12 +48,16 @@
                     <td><?php echo $no++?></td>
                     <td><?php echo $dminum['menu_nama'] ?></td>
                     <td><?php echo $dminum['menu_status'] ?></td>
-                    <td><?php echo $dminum['menu_harga'] ?></td>
+                    <td><?php echo "Rp.".number_format($dminum['menu_harga']) ?></td>
                 </tr>
                 <?php
             }
         ?>
     </table>
+   
+    <div class="d-flex justify-content-center">
+        <a href="pesan.php" class="btn btn-info text-white">Pesan</a>
+    </div>
 </div>    
 
 <?php include 'footer.php' ?>
