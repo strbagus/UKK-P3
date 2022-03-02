@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 17, 2022 at 09:29 AM
--- Server version: 8.0.27-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Host: localhost
+-- Generation Time: Mar 02, 2022 at 06:46 PM
+-- Server version: 10.6.5-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_level` (
-  `level_id` int NOT NULL,
-  `level_nama` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `level_id` int(11) NOT NULL,
+  `level_nama` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_level`
@@ -51,9 +50,9 @@ INSERT INTO `tb_level` (`level_id`, `level_nama`) VALUES
 --
 
 CREATE TABLE `tb_meja` (
-  `meja_no` int NOT NULL,
-  `meja_status` enum('Dipakai','Kosong') COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `meja_no` int(11) NOT NULL,
+  `meja_status` enum('Dipakai','Kosong') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_meja`
@@ -91,13 +90,13 @@ INSERT INTO `tb_meja` (`meja_no`, `meja_status`) VALUES
 --
 
 CREATE TABLE `tb_menu` (
-  `menu_id` int NOT NULL,
-  `menu_nama` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `menu_harga` int NOT NULL,
-  `menu_status` enum('Tersedia','Habis') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `menu_tipe` enum('Makanan','Minuman') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `menu_gambar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `menu_id` int(11) NOT NULL,
+  `menu_nama` varchar(35) NOT NULL,
+  `menu_harga` int(11) NOT NULL,
+  `menu_status` enum('Tersedia','Habis') NOT NULL,
+  `menu_tipe` enum('Makanan','Minuman') NOT NULL,
+  `menu_gambar` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_menu`
@@ -105,8 +104,7 @@ CREATE TABLE `tb_menu` (
 
 INSERT INTO `tb_menu` (`menu_id`, `menu_nama`, `menu_harga`, `menu_status`, `menu_tipe`, `menu_gambar`) VALUES
 (1, 'Nasi Goreng Gila', 15000, 'Tersedia', 'Makanan', ''),
-(2, 'Nasi Goreng Setan', 17000, 'Tersedia', 'Makanan', ''),
-(3, 'Nasi Goreng Seafood', 19000, 'Tersedia', 'Makanan', ''),
+(3, 'Nasi Goreng Seafood', 19000, 'Habis', 'Makanan', ''),
 (4, 'Ikan Nila Bakar', 15000, 'Tersedia', 'Makanan', ''),
 (5, 'Nasi Putih', 4000, 'Tersedia', 'Makanan', ''),
 (6, 'Soda Gembira', 10000, 'Tersedia', 'Minuman', ''),
@@ -117,7 +115,7 @@ INSERT INTO `tb_menu` (`menu_id`, `menu_nama`, `menu_harga`, `menu_status`, `men
 (12, 'Jus Alpokat', 9000, 'Tersedia', 'Minuman', ''),
 (13, 'Jus Mangga', 8000, 'Tersedia', 'Minuman', ''),
 (14, 'Bakmi Jawa Godhog', 17500, 'Habis', 'Makanan', ''),
-(18, 'aaa test', 150000, 'Tersedia', 'Makanan', '/assets/img/neofetch.png');
+(19, 'Susu Jahe', 6000, 'Tersedia', 'Minuman', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,36 +124,31 @@ INSERT INTO `tb_menu` (`menu_id`, `menu_nama`, `menu_harga`, `menu_status`, `men
 --
 
 CREATE TABLE `tb_order` (
-  `order_id` int NOT NULL,
-  `order_transaksi` int NOT NULL,
-  `order_menu` int NOT NULL,
-  `order_jumlah` int NOT NULL,
-  `order_sub_total` int NOT NULL,
-  `order_keterangan` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `order_id` int(11) NOT NULL,
+  `order_transaksi` int(11) NOT NULL,
+  `order_menu` int(11) NOT NULL,
+  `order_jumlah` int(11) NOT NULL,
+  `order_sub_total` int(11) DEFAULT NULL,
+  `order_keterangan` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table structure for table `tb_pelanggan`
+-- Dumping data for table `tb_order`
 --
 
-CREATE TABLE `tb_pelanggan` (
-  `pelanggan_id` int NOT NULL,
-  `pelanggan_nama` varchar(35) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `pelanggan_nohp` varchar(18) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_pelanggan`
---
-
-INSERT INTO `tb_pelanggan` (`pelanggan_id`, `pelanggan_nama`, `user_username`, `pelanggan_nohp`, `user_password`) VALUES
-(1, 'Ananda Aditya', 'adit', '08924496847', '357344787fa3d91429f000604af9667f'),
-(2, 'Natha Kuncoro', 'natha', '0879993421', 'b78a97e50286a66ebb44a77336484ee9'),
-(3, 'Ipul Yusuf', 'ipul', '08999335212', 'ec59bd496016bb82280c4ee444129d54');
+INSERT INTO `tb_order` (`order_id`, `order_transaksi`, `order_menu`, `order_jumlah`, `order_sub_total`, `order_keterangan`) VALUES
+(14, 5, 4, 2, 30000, 'tidak pedas'),
+(16, 5, 3, 2, 38000, ''),
+(19, 6, 3, 2, 38000, ''),
+(20, 6, 4, 3, 45000, ''),
+(28, 9, 11, 4, 72000, ''),
+(29, 9, 9, 4, 20000, ''),
+(30, 10, 11, 2, 36000, ''),
+(31, 10, 1, 1, 15000, ''),
+(32, 10, 6, 1, 10000, ''),
+(33, 10, 12, 2, 18000, ''),
+(34, 11, 3, 3, 57000, ''),
+(35, 11, 8, 3, 15000, 'es');
 
 -- --------------------------------------------------------
 
@@ -164,13 +157,24 @@ INSERT INTO `tb_pelanggan` (`pelanggan_id`, `pelanggan_nama`, `user_username`, `
 --
 
 CREATE TABLE `tb_transaksi` (
-  `transaksi_id` int NOT NULL,
-  `transaksi_meja` int NOT NULL,
+  `transaksi_id` int(11) NOT NULL,
+  `transaksi_meja` int(11) NOT NULL,
   `transaksi_tanggal` date NOT NULL,
-  `transaksi_total` int NOT NULL,
-  `transaksi_pelanggan` int NOT NULL,
-  `transaksi_status` enum('Dibayar','Belum') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `transaksi_total` int(11) NOT NULL,
+  `transaksi_pelanggan` int(11) NOT NULL,
+  `transaksi_status` enum('Dibayar','Belum') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`transaksi_id`, `transaksi_meja`, `transaksi_tanggal`, `transaksi_total`, `transaksi_pelanggan`, `transaksi_status`) VALUES
+(5, 12, '2022-03-01', 68000, 1, 'Dibayar'),
+(6, 9, '2022-03-02', 83000, 1, 'Dibayar'),
+(9, 13, '2022-03-02', 92000, 25, 'Dibayar'),
+(10, 11, '2022-03-02', 79000, 26, 'Dibayar'),
+(11, 5, '2022-03-02', 72000, 25, 'Dibayar');
 
 -- --------------------------------------------------------
 
@@ -179,13 +183,13 @@ CREATE TABLE `tb_transaksi` (
 --
 
 CREATE TABLE `tb_user` (
-  `user_id` int NOT NULL,
-  `user_username` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_password` varchar(35) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_nama` varchar(35) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_nohp` varchar(18) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `user_level` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_id` int(11) NOT NULL,
+  `user_username` varchar(20) NOT NULL,
+  `user_password` varchar(35) NOT NULL,
+  `user_nama` varchar(35) NOT NULL,
+  `user_nohp` varchar(18) DEFAULT NULL,
+  `user_level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_user`
@@ -194,7 +198,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`user_id`, `user_username`, `user_password`, `user_nama`, `user_nohp`, `user_level`) VALUES
 (1, 'bagus', 'a89407b9014f6f6d9a85f2d5b6a2c118', 'Satrio Bagus', NULL, 1),
 (2, 'silvia', 'e77bb954488789ddafb45eb980d5c49f', 'Diva Silvia', NULL, 3),
-(5, 'gazi', '82562a9599428103cfa944261b2726fb', 'Gazi Avriza', NULL, 2),
+(5, 'gazi', '82562a9599428103cfa944261b2726fb', 'Gazi Avriza', NULL, 4),
 (25, 'natha', 'b78a97e50286a66ebb44a77336484ee9', 'Natha Kuncoro', '082362352', 5),
 (26, 'adit', '357344787fa3d91429f000604af9667f', 'Ananda Aditya', '08963432532', 5),
 (27, 'ipul', 'ec59bd496016bb82280c4ee444129d54', 'Ipul Yusuf', '08823123552', 5);
@@ -230,12 +234,6 @@ ALTER TABLE `tb_order`
   ADD KEY `ordermenu` (`order_menu`);
 
 --
--- Indexes for table `tb_pelanggan`
---
-ALTER TABLE `tb_pelanggan`
-  ADD PRIMARY KEY (`pelanggan_id`);
-
---
 -- Indexes for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
@@ -259,37 +257,25 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_level`
 --
 ALTER TABLE `tb_level`
-  MODIFY `level_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_menu`
 --
 ALTER TABLE `tb_menu`
-  MODIFY `menu_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tb_pelanggan`
---
-ALTER TABLE `tb_pelanggan`
-  MODIFY `pelanggan_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tb_transaksi`
---
-ALTER TABLE `tb_transaksi`
-  MODIFY `transaksi_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
@@ -299,21 +285,21 @@ ALTER TABLE `tb_user`
 -- Constraints for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  ADD CONSTRAINT `ordermenu` FOREIGN KEY (`order_menu`) REFERENCES `tb_menu` (`menu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ordertransaksi` FOREIGN KEY (`order_transaksi`) REFERENCES `tb_transaksi` (`transaksi_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `ordermenu` FOREIGN KEY (`order_menu`) REFERENCES `tb_menu` (`menu_id`),
+  ADD CONSTRAINT `ordertransaksi` FOREIGN KEY (`order_transaksi`) REFERENCES `tb_transaksi` (`transaksi_id`);
 
 --
 -- Constraints for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  ADD CONSTRAINT `transaksimeja` FOREIGN KEY (`transaksi_meja`) REFERENCES `tb_meja` (`meja_no`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `transaksiuser` FOREIGN KEY (`transaksi_pelanggan`) REFERENCES `tb_user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `transaksimeja` FOREIGN KEY (`transaksi_meja`) REFERENCES `tb_meja` (`meja_no`),
+  ADD CONSTRAINT `transaksiuser` FOREIGN KEY (`transaksi_pelanggan`) REFERENCES `tb_user` (`user_id`);
 
 --
 -- Constraints for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  ADD CONSTRAINT `roleuser` FOREIGN KEY (`user_level`) REFERENCES `tb_level` (`level_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `roleuser` FOREIGN KEY (`user_level`) REFERENCES `tb_level` (`level_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
