@@ -15,8 +15,8 @@ Ini merupakan aplikasi untuk sistem restoran dimana pelanggan dapat memesan maka
 ### Via Download
 
 1. Klik tombol Code hijau di repository ini, lalu klik Download ZIP dan simpan di folder yang diinginkan.
-2. Buka folder tersebut, lalu extract file.zip tersebut.
-3. Copy folder hasil extract file.zip tersebut lalu paste di folder htdocs yang berada di root folder atau c:/xampp/
+2. Buka folder tersebut, lalu extract file .zip tersebut.
+3. Copy folder hasil extract file .zip tersebut lalu paste di root folder atau di c:/xampp/htdocs.
 
 ### Via CLI
 Pertama, Membuat Directory/Folder lalu masuk folder.
