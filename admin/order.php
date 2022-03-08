@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM tb_order INNER JOIN tb_menu ON order_menu=menu_id";
+                    $sql = "SELECT * FROM tb_order INNER JOIN tb_menu ON order_menu=menu_id WHERE order_status='dipesan'";
                     $result = $conn->query($sql);
                     $no = 1;
                     while ($d=$result->fetch_array()) {

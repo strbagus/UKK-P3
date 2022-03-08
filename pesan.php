@@ -2,7 +2,7 @@
     include 'header.php';
     session_start();
     if(!$_SESSION['status']=="pelanggan_login"){
-        header("location: ../login.php?alert=belum_login");
+        header("location: login.php?alert=belum_login");
     }
     $_SESSION["nomeja"];
     $date=getdate(date("U"));
@@ -26,7 +26,6 @@
                 ('$notransaksi','$nomeja','$tanggal','0','$uid','Belum')";
         $result3 = $conn->query($sql3);
     }
-    
         $notransaksi = $_SESSION['notransaksi'];
     if(isset($_POST["TambahMenu"])){
         $menu = $_POST['menu'];
@@ -91,7 +90,11 @@
             
              <?php
             }else{
-                ?>
+                $sqltrans = "SELECT transaksi_status FROM tb_transaksi WHERE transaksi_id=$notransaksi";
+                $resulttrans = $conn->query($sqltrans);
+                $dtrans = $resulttrans->fetch_array();
+                if($dtrans['transaksi_status']=="Belum"){
+                    ?>
                     <form method="post">
                         
                         <h5>Pilih Menu</h5>
@@ -139,6 +142,12 @@
                         </div>
                     </form>
                     <br><hr>
+                    <?php
+                }
+
+                ?>  
+                    
+                    
                     <h5>Menu Dipilih</h5>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -148,7 +157,7 @@
                                 <th width="4%">Jumlah</th>
                                 <th width="20%">Harga</th>
                                 <th width="20%">Total</th>
-                                <th width="15%">Action</th>
+                                <th width="15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -164,10 +173,12 @@
                                 $result7 = $conn->query($sql7);
                                 $no = 1;
                                 while($d7=$result7->fetch_array()){
-                                    $total = $d7['menu_harga']*$d7['order_jumlah'];
-                                    $oid = $d7['order_id'];
-                                    $sqltotal = "UPDATE tb_order SET order_sub_total=$total WHERE order_id=$oid";
-                                    $totalharga = $conn->query($sqltotal);
+                                    if($d7['order_status']=="dipesan"){
+                                        $total = $d7['menu_harga']*$d7['order_jumlah'];
+                                        $oid = $d7['order_id'];
+                                        $sqltotal = "UPDATE tb_order SET order_sub_total=$total WHERE order_id=$oid";
+                                        $totalharga = $conn->query($sqltotal);
+                                    }
                                     ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
@@ -180,34 +191,55 @@
                                             ?>
                                         </td>
                                         <td><?php echo $d7['order_jumlah']?></td>
-                                        <td><?php echo $d7['menu_harga'] ?></td>
+                                        <td><?php echo "Rp ".number_format($d7['menu_harga']) ?></td>
                                         <td><?php 
                                             
-                                            echo $total;
+                                            echo "Rp ".number_format($total);
                                             ?>
                                         </td>
-                                        <td>
-                                            <div class="d-flex justify-content-evenly">
-                                                <a href="pesan.php?minus=true&id=<?php echo $d7['order_id']?>" class="text-warning"><i class="fas fa-minus-square"></i></a>
-                                                <a href="pesan.php?plus=true&id=<?php echo $d7['order_id']?>" class="text-success"><i class="fas fa-plus-square"></i></a>
-                                                <a href="pesan.php?delete=true&id=<?php echo $d7['order_id']?>" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-                                            
-                                            </div>
+                                        <td class="text-center">
+                                            <?php
+                                                if($d7['order_status']=="dipilih"){
+                                                    ?>
+                                                    <div class="d-flex justify-content-evenly">
+                                                        <a href="pesan.php?minus=true&id=<?php echo $d7['order_id']?>" class="text-warning"><i class="fas fa-minus-square"></i></a>
+                                                        <a href="pesan.php?plus=true&id=<?php echo $d7['order_id']?>" class="text-success"><i class="fas fa-plus-square"></i></a>
+                                                        <a href="pesan.php?delete=true&id=<?php echo $d7['order_id']?>" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+
+                                                    </div>
+                                                    <?php
+                                                }else{
+                                                    echo "dipesan";
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
+                                    
                                     <?php
                                 }
                             ?>
-                            <!-- <tr>
-                                <td colspan="4" class="bg-dark text-white text-right">Total : </td>
-                                <td><?php
-                                    echo $total;
-                                ?></td>
-                                <td class="bg-dark"></td>
-                            </tr> -->
                         </tbody>
                     </table>
-                <?php
+                        
+                        <?php
+                        if(isset($_GET['idt'])){
+                            $idt = $_GET['idt'];
+                            $sqlpesan = "UPDATE tb_order SET order_status='dipesan' WHERE order_transaksi=$idt";
+                            $conn->query($sqlpesan);
+                        }
+                        if($dtrans['transaksi_status']=="Belum"){
+                        ?>
+                            <div class="d-flex justify-content-center">
+                                <a href="pesan.php?idt=<?= $notransaksi ?>"><div class="btn btn-info text-white">Pesan</div></a>
+                            </div>
+                        <?php
+                        }else{
+                            ?>
+                            <div class="d-flex justify-content-center">
+                                Transaksi Selesai. Terima Kasih 
+                            </div>
+                            <?php
+                        }
             }
         ?>
         
