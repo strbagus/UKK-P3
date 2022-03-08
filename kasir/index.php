@@ -11,7 +11,7 @@
                 <hr>
                 <span>
                     <?php
-                        $meja = $conn->query("SELECT *, COUNT(meja_no) AS utotal FROM tb_meja WHERE meja_status='Kosong'");
+                        $meja = $conn->query("SELECT COUNT(meja_no) AS utotal FROM tb_meja WHERE meja_status='Kosong'");
                         $dmeja = $meja->fetch_array();
                         echo "Jumlah Meja Tersedia : ".$dmeja['utotal'];
                     ?>
@@ -24,7 +24,7 @@
                 <hr>
                 <span>
                     <?php
-                        $omset = $conn->query("SELECT *,COUNT(transaksi_id) AS trantotal FROM tb_transaksi WHERE transaksi_status='Belum'");
+                        $omset = $conn->query("SELECT COUNT(transaksi_id) AS trantotal FROM tb_transaksi WHERE transaksi_status='Belum'");
                         $domset = $omset->fetch_array();
                         echo "Jumlah Transaksi Berlangung : ".$domset['trantotal'];
                     ?>

@@ -2,7 +2,7 @@
     include 'header.php';
 ?>
 <div class="container bg-light rounded p-4">
-    <h3>DASHBOARD ADMIN</h3>
+    <h3>DASHBOARD OWNER</h3>
     <hr>
     <div class="row d-flex justify-content-evenly">
         
@@ -12,7 +12,7 @@
                 <hr>
                 <span>
                     <?php
-                        $menu = $conn->query("SELECT *, COUNT(menu_id) AS utotal FROM tb_menu");
+                        $menu = $conn->query("SELECT COUNT(menu_id) AS utotal FROM tb_menu");
                         $dmenu = $menu->fetch_array();
                         echo "Jumlah Menu : ".$dmenu['utotal'];
                     ?>
@@ -25,7 +25,7 @@
                 <hr>
                 <span>
                     <?php
-                        $omset = $conn->query("SELECT *,COUNT(transaksi_id) AS trantotal, SUM(transaksi_total) AS utotal FROM tb_transaksi");
+                        $omset = $conn->query("SELECT COUNT(transaksi_id) AS trantotal, SUM(transaksi_total) AS utotal FROM tb_transaksi");
                         $domset = $omset->fetch_array();
                         echo "Omset : Rp.".number_format($domset['utotal']);
                     ?>

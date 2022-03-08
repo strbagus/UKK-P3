@@ -11,7 +11,7 @@
                 <hr>
                 <span>
                     <?php
-                        $meja = $conn->query("SELECT *, COUNT(meja_no) AS utotal FROM tb_meja");
+                        $meja = $conn->query("SELECT COUNT(meja_no) AS utotal FROM tb_meja");
                         $dmeja = $meja->fetch_array();
                         echo "Jumlah Meja : ".$dmeja['utotal'];
                     ?>
@@ -24,7 +24,7 @@
                 <hr>
                 <span>
                     <?php
-                        $user = $conn->query("SELECT *, COUNT(user_id) AS utotal FROM tb_user");
+                        $user = $conn->query("SELECT COUNT(user_id) AS utotal FROM tb_user");
                         $duser = $user->fetch_array();
                         echo "Jumlah User : ".$duser['utotal'];
                     ?>
@@ -37,7 +37,7 @@
                 <hr>
                 <span>
                     <?php
-                        $menu = $conn->query("SELECT *, COUNT(menu_id) AS utotal FROM tb_menu");
+                        $menu = $conn->query("SELECT COUNT(menu_id) AS utotal FROM tb_menu");
                         $dmenu = $menu->fetch_array();
                         echo "Jumlah Menu : ".$dmenu['utotal'];
                     ?>
@@ -50,7 +50,7 @@
                 <hr>
                 <span>
                     <?php
-                        $omset = $conn->query("SELECT *,COUNT(transaksi_id) AS trantotal, SUM(transaksi_total) AS utotal FROM tb_transaksi");
+                        $omset = $conn->query("SELECT COUNT(transaksi_id) AS trantotal, SUM(transaksi_total) AS utotal FROM tb_transaksi");
                         $domset = $omset->fetch_array();
                         echo "Omset : Rp.".number_format($domset['utotal']);
                     ?>
