@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2022 at 06:46 PM
--- Server version: 10.6.5-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Mar 10, 2022 at 05:53 PM
+-- Server version: 10.7.3-MariaDB
+-- PHP Version: 8.1.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,7 @@ INSERT INTO `tb_meja` (`meja_no`, `meja_status`) VALUES
 (4, 'Kosong'),
 (5, 'Kosong'),
 (6, 'Kosong'),
-(7, 'Kosong'),
+(7, 'Dipakai'),
 (8, 'Kosong'),
 (9, 'Kosong'),
 (10, 'Kosong'),
@@ -74,7 +74,7 @@ INSERT INTO `tb_meja` (`meja_no`, `meja_status`) VALUES
 (13, 'Kosong'),
 (14, 'Kosong'),
 (15, 'Kosong'),
-(16, 'Kosong'),
+(16, 'Dipakai'),
 (17, 'Kosong'),
 (18, 'Kosong'),
 (19, 'Kosong'),
@@ -129,26 +129,29 @@ CREATE TABLE `tb_order` (
   `order_menu` int(11) NOT NULL,
   `order_jumlah` int(11) NOT NULL,
   `order_sub_total` int(11) DEFAULT NULL,
-  `order_keterangan` varchar(50) DEFAULT NULL
+  `order_keterangan` varchar(50) DEFAULT NULL,
+  `order_status` enum('dipilih','dipesan') NOT NULL DEFAULT 'dipilih'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_order`
 --
 
-INSERT INTO `tb_order` (`order_id`, `order_transaksi`, `order_menu`, `order_jumlah`, `order_sub_total`, `order_keterangan`) VALUES
-(14, 5, 4, 2, 30000, 'tidak pedas'),
-(16, 5, 3, 2, 38000, ''),
-(19, 6, 3, 2, 38000, ''),
-(20, 6, 4, 3, 45000, ''),
-(28, 9, 11, 4, 72000, ''),
-(29, 9, 9, 4, 20000, ''),
-(30, 10, 11, 2, 36000, ''),
-(31, 10, 1, 1, 15000, ''),
-(32, 10, 6, 1, 10000, ''),
-(33, 10, 12, 2, 18000, ''),
-(34, 11, 3, 3, 57000, ''),
-(35, 11, 8, 3, 15000, 'es');
+INSERT INTO `tb_order` (`order_id`, `order_transaksi`, `order_menu`, `order_jumlah`, `order_sub_total`, `order_keterangan`, `order_status`) VALUES
+(14, 5, 4, 2, 30000, 'tidak pedas', 'dipesan'),
+(16, 5, 3, 2, 38000, '', 'dipesan'),
+(19, 6, 3, 2, 38000, '', 'dipesan'),
+(20, 6, 4, 3, 45000, '', 'dipesan'),
+(28, 9, 11, 4, 72000, '', 'dipesan'),
+(29, 9, 9, 4, 20000, '', 'dipesan'),
+(30, 10, 11, 2, 36000, '', 'dipesan'),
+(31, 10, 1, 1, 15000, '', 'dipesan'),
+(32, 10, 6, 1, 10000, '', 'dipesan'),
+(33, 10, 12, 2, 18000, '', 'dipesan'),
+(34, 11, 3, 3, 57000, '', 'dipesan'),
+(35, 11, 8, 3, 15000, 'es', 'dipesan'),
+(41, 13, 4, 2, 30000, '', 'dipesan'),
+(42, 13, 7, 3, 60000, '', 'dipesan');
 
 -- --------------------------------------------------------
 
@@ -174,7 +177,8 @@ INSERT INTO `tb_transaksi` (`transaksi_id`, `transaksi_meja`, `transaksi_tanggal
 (6, 9, '2022-03-02', 83000, 1, 'Dibayar'),
 (9, 13, '2022-03-02', 92000, 25, 'Dibayar'),
 (10, 11, '2022-03-02', 79000, 26, 'Dibayar'),
-(11, 5, '2022-03-02', 72000, 25, 'Dibayar');
+(11, 5, '2022-03-02', 72000, 25, 'Dibayar'),
+(13, 5, '2022-03-10', 90000, 25, 'Dibayar');
 
 -- --------------------------------------------------------
 
@@ -269,7 +273,7 @@ ALTER TABLE `tb_menu`
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
