@@ -173,8 +173,9 @@
                                 $result7 = $conn->query($sql7);
                                 $no = 1;
                                 while($d7=$result7->fetch_array()){
+
+                                    $total = $d7['menu_harga']*$d7['order_jumlah'];
                                     if($d7['order_status']=="dipesan"){
-                                        $total = $d7['menu_harga']*$d7['order_jumlah'];
                                         $oid = $d7['order_id'];
                                         $sqltotal = "UPDATE tb_order SET order_sub_total=$total WHERE order_id=$oid";
                                         $totalharga = $conn->query($sqltotal);
