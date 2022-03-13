@@ -1,16 +1,5 @@
 <?php
-session_start();
-if($_SESSION['status']==="admin_login"){
-    header("location:admin");
-}else if($_SESSION['status']==="waiter_login"){
-    header("location:admin");
-}else if($_SESSION['status']==="kasir_login"){
-    header("location:admin");
-}else if($_SESSION['status']==="owner_login"){
-    header("location:admin");
-}else if($_SESSION['status']==="pelanggan_login"){
-    header("location:admin");
-}else{
+if(empty($_SESSION['status'])){
     include 'header.php';
     ?>
         <div class="container ">
@@ -37,5 +26,16 @@ if($_SESSION['status']==="admin_login"){
         </div>
     <?php
     include 'footer.php';
+}else if($_SESSION['status']==="admin_login"){
+    header("location:admin");
+}else if($_SESSION['status']==="waiter_login"){
+    header("location:admin");
+}else if($_SESSION['status']==="kasir_login"){
+    header("location:admin");
+}else if($_SESSION['status']==="owner_login"){
+    header("location:admin");
+}else if($_SESSION['status']==="pelanggan_login"){
+    header("location:admin");
 }
+
 ?>

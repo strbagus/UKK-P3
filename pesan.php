@@ -1,36 +1,34 @@
 <?php
     include 'header.php';
-    session_start();
     if(!$_SESSION['status']=="pelanggan_login"){
         header("location: login.php?alert=belum_login");
     }
-    $_SESSION["nomeja"];
+    // $_SESSION["nomeja"];
     $date=getdate(date("U"));
     $tanggal = "$date[year]-$date[mon]-$date[mday]";
     $uid = $_SESSION['uid'];
 
     if(isset($_POST['Pesan'])){
-        
-
         $sql5 = $conn->query("SELECT * FROM tb_transaksi ORDER BY transaksi_id DESC LIMIT 1");
         $d5 = $sql5->fetch_array();
         $_SESSION['notransaksi'] = $d5["transaksi_id"] + 1;
         $nomeja = $_POST['nomeja'];
-        $notransaksi = $_SESSION['notransaksi'];
+        
         $conn->query("UPDATE tb_meja SET meja_status='Dipakai' WHERE meja_no=$nomeja");
         $_SESSION["nomeja"] = $nomeja;
-        
+        $notransaksi = $_SESSION['notransaksi'];
         $sql3 = "INSERT INTO 
                 tb_transaksi 
                 VALUES 
                 ('$notransaksi','$nomeja','$tanggal','0','$uid','Belum')";
         $result3 = $conn->query($sql3);
+        
     }
-        $notransaksi = $_SESSION['notransaksi'];
     if(isset($_POST["TambahMenu"])){
         $menu = $_POST['menu'];
         $jumlah = $_POST['jumlah'];
         $keterangan = $_POST['keterangan'];
+        $notransaksi = $_SESSION['notransaksi'];
 
         $sql6 = "INSERT INTO tb_order
                 (order_transaksi, order_menu, order_jumlah, order_keterangan)
@@ -90,6 +88,7 @@
             
              <?php
             }else{
+                $notransaksi = $_SESSION['notransaksi'];
                 $sqltrans = "SELECT transaksi_status FROM tb_transaksi WHERE transaksi_id=$notransaksi";
                 $resulttrans = $conn->query($sqltrans);
                 $dtrans = $resulttrans->fetch_array();
@@ -246,5 +245,5 @@
         
     </div>
     <?php 
-    
+  
 include 'footer.php' ?>
