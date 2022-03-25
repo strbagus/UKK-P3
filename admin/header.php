@@ -61,6 +61,9 @@
             <li class="nav-item">
             <a class="nav-link" href="user.php">User</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="batal.php">Dibatalkan</a>
+            </li>
         </ul>
         <span class="navbar-text">
             <?php

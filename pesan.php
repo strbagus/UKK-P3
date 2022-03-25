@@ -53,6 +53,10 @@
         $sql10 = "DELETE FROM tb_order WHERE order_id=$id";
         $result10 = $conn->query($sql10);
     }
+
+    if(isset($_GET['idt'])){
+        header("location: pesan.php");
+    }
 ?>
 
     <div class="col-md-8 mx-auto bg-light rounded p-4">
