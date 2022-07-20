@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli("localhost", "bagusw", "1sampai8", "db_restoukk");
+    $conn = new mysqli("localhost", "root", "", "restoukk");
     if (!$conn) {
         echo "Connection Error : ".$conn->connect_error();
     }
